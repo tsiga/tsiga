@@ -7,10 +7,12 @@ var tsiga = {
     tsiga.initFullPage();
     $("#menuOpen").on("click", function() {
       tsiga.openNav();
-	});
-	$(".overlay-content a").on("click", function(){
-		tsiga.closeNav();
-	});
+    });
+    $(".overlay-content a").on("click", function() {
+      tsiga.closeNav();
+    });
+
+    tsiga.toggleCards(false);
   },
   openNav: function() {
     document.getElementById("myNav").style.width = "100%";
@@ -89,14 +91,16 @@ var tsiga = {
 
       //events
       onLeave: function(index, nextIndex, direction) {
-		
-	  },
+        $("#trans-hr" + index).removeClass("trans-grow");
+        tsiga.toggleCards(false);
+      },
       afterLoad: function(anchorLink, index) {
-		if (index == 2) {
-			$(".trans-hr").addClass("trans-grow");
-		  } else {
-			$(".trans-hr").removeClass("trans-grow");
-		  }
+        console.log(".trans-hr" + index);
+        $("#trans-hr" + index).addClass("trans-grow");
+
+        if(index == 3){
+          tsiga.toggleCards(true);
+        }
       },
       afterRender: function() {},
       afterResize: function() {},
@@ -110,5 +114,26 @@ var tsiga = {
         nextSlideIndex
       ) {}
     });
+  },
+  toggleCards: function(show){
+    if(show){
+      $('#card1').removeClass('hidden');
+      $('#card2').removeClass('hidden');
+      $('#card3').removeClass('hidden');
+      $('#card4').removeClass('hidden');
+      $('#card1').addClass('animated bounceInLeft');
+      $('#card2').addClass('animated bounceInDown');
+      $('#card3').addClass('animated bounceInUp');
+      $('#card4').addClass('animated bounceInRight');
+    }else{
+      $('#card1').addClass('hidden');
+      $('#card2').addClass('hidden');
+      $('#card3').addClass('hidden');
+      $('#card4').addClass('hidden');
+      $('#card1').removeClass('animated bounceInLeft');
+      $('#card2').removeClass('animated bounceInDown');
+      $('#card3').removeClass('animated bounceInUp');
+      $('#card4').removeClass('animated bounceInRight');
+    }
   }
 };
