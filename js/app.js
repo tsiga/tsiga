@@ -1,26 +1,34 @@
-$(document).ready(function() {
+$(document).ready(function () {
   tsiga.init();
 });
 
 var tsiga = {
-  init: function() {
+  init: function () {
     tsiga.initFullPage();
-    $("#menuOpen").on("click", function() {
+    $("#menuOpen").on("click", function () {
       tsiga.openNav();
     });
-    $(".overlay-content a").on("click", function() {
+    $(".overlay-content a").on("click", function () {
       tsiga.closeNav();
+    });
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 8
     });
 
     tsiga.toggleCards(false);
   },
-  openNav: function() {
+  openNav: function () {
     document.getElementById("myNav").style.width = "100%";
   },
-  closeNav: function() {
+  closeNav: function () {
     document.getElementById("myNav").style.width = "0%";
   },
-  initFullPage: function() {
+  initFullPage: function () {
     $("#fullpage").fullpage({
       //Navigation
       menu: "#menu",
@@ -28,7 +36,7 @@ var tsiga = {
       anchors: ["page1", "page2", "page3", "page4"],
       navigation: true,
       navigationPosition: "right",
-      navigationTooltips: ["Page 1", "Page 2", "Page 3", "Page 4"],
+      navigationTooltips: ["Accueil", "Nous", "Vous", "Page 4", "Contact"],
       showActiveTooltip: false,
       slidesNavigation: true,
       slidesNavPosition: "bottom",
@@ -90,23 +98,23 @@ var tsiga = {
       lazyLoading: true,
 
       //events
-      onLeave: function(index, nextIndex, direction) {
-        $("#trans-hr" + index).removeClass("trans-grow");
+      onLeave: function (index, nextIndex, direction) {
+        $(".trans-hr" + index).removeClass("trans-grow");
         tsiga.toggleCards(false);
       },
-      afterLoad: function(anchorLink, index) {
+      afterLoad: function (anchorLink, index) {
         console.log(".trans-hr" + index);
-        $("#trans-hr" + index).addClass("trans-grow");
+        $(".trans-hr" + index).addClass("trans-grow");
 
-        if(index == 3){
+        if (index == 3) {
           tsiga.toggleCards(true);
         }
       },
-      afterRender: function() {},
-      afterResize: function() {},
-      afterResponsive: function(isResponsive) {},
-      afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex) {},
-      onSlideLeave: function(
+      afterRender: function () {},
+      afterResize: function () {},
+      afterResponsive: function (isResponsive) {},
+      afterSlideLoad: function (anchorLink, index, slideAnchor, slideIndex) {},
+      onSlideLeave: function (
         anchorLink,
         index,
         slideIndex,
@@ -115,8 +123,8 @@ var tsiga = {
       ) {}
     });
   },
-  toggleCards: function(show){
-    if(show){
+  toggleCards: function (show) {
+    if (show) {
       $('#card1').removeClass('hidden');
       $('#card2').removeClass('hidden');
       $('#card3').removeClass('hidden');
@@ -125,7 +133,7 @@ var tsiga = {
       $('#card2').addClass('animated bounceInDown');
       $('#card3').addClass('animated bounceInUp');
       $('#card4').addClass('animated bounceInRight');
-    }else{
+    } else {
       $('#card1').addClass('hidden');
       $('#card2').addClass('hidden');
       $('#card3').addClass('hidden');
