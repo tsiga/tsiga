@@ -14,6 +14,10 @@ http://www.tooplate.com/view/2098-health
     overflow-x: hidden;
   }
 
+  .bold {
+    font-weight: bold !important;
+  }
+
 
   /*---------------------------------------
      TYPOGRAPHY              
@@ -157,7 +161,6 @@ http://www.tooplate.com/view/2098-health
     text-align: left;
   }
   .news-info span {
-    display: block;
     letter-spacing: 0.5px;
   }
   .news-info h3 {
