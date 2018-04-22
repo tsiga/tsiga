@@ -12,6 +12,9 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-117943533-1');
+        if (location.protocol != 'https:') {
+            location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
     </script>
 
     <title>Tsiga - Tarification soins</title>
