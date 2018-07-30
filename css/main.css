@@ -1,11 +1,3 @@
-/*
-
-Template 2098 Health
-
-http://www.tooplate.com/view/2098-health
-
-*/
-
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
 
   body {
@@ -16,6 +8,22 @@ http://www.tooplate.com/view/2098-health
 
   .bold {
     font-weight: bold !important;
+  }
+
+  .selectedDiv{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+  }
+
+  .darker-background{
+    background-color: #F5F5F5 !important;
+  }
+
+  .resetKatz:hover{
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
   }
 
 
@@ -1056,5 +1064,11 @@ http://www.tooplate.com/view/2098-health
       letter-spacing: 1px;
     }
 
+  }
+
+  @media only screen and (max-width: 992px) {
+    .news-thumb{
+      margin: 15px;
+    }
   }
 
