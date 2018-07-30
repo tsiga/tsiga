@@ -25,27 +25,31 @@ var katzEngine = new Vue({
             this.dsm = false;
             this.resetAllSteps(null);
             this.resetSelectedScore();
+            toastr.success("Remis à zéro !");
         },
         computeFinalValue() {
             let scores = [];
+            let textResult = "";
             for (let crit of this.criterias) {
                 scores.push(crit.selectedScore)
             }
             this.rate = scores;
 
             if (this.isCPace(scores)) {
-                return 'Forfait C';
+                textResult = 'Forfait C';
             } else if (this.isBPace(scores)) {
-                return 'Forfait B';
+                textResult = 'Forfait B';
             } else if (this.isAPace(scores)) {
-                return 'Forfait A';
+                textResult = 'Forfait A';
             } else if (this.isSevenTimesAWeek(scores)) {
-                return 'Toilettes 7 fois par semaine';
+                textResult = 'Toilettes 7 fois par semaine';
             } else if (this.isTwoTimesAWeek(scores)) {
-                return 'Toilettes 2 fois par semaine';
+                textResult = 'Toilettes 2 fois par semaine';
             }
 
-            return "";
+            if(textResult != "") toastr.success(textResult, "Résultat : ");
+
+            return textResult;
         },
         isCPace(scores) {
             return (scores[0] >= 4 && scores[1] >= 4 && scores[2] >= 4 && scores[3] >= 4 && scores[4] >= 3 && scores[5] >= 3 && (scores[4] == 4 || scores[5] == 4)) ? true : false;
